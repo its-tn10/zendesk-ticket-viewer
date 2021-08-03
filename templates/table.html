@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for i in range(5) %}
+<div class="row">
+    {% for ticket in tickets[i*5:(i+1)*5] %}
+        <div class="col">
+            <div class="card shadow h-100">
+              <div class="card-body">
+                <p class="card-text">{{ticket['subject']}}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                      <a href="{{url_for('ticket',ticket_id=ticket['id'])}}" class="btn btn-primary" role="button">View</a>
+                  </div>
+                  <small class="text-muted">{{ticket['created_at']}}</small>
+                </div>
+              </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endfor %}
+
+{% endblock %}
