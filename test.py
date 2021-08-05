@@ -66,22 +66,22 @@ class TestTicketPagingResponse(unittest.TestCase):
         '''Test that get_page() works in dividing the 100 tickets to 4 pages with 25 tickets each.'''
         pageRequest = [utils.get_page(1), utils.get_page(2), utils.get_page(3), utils.get_page(4)]
 
-        self.assertEqual(len(pageRequest[0]), len(pageRequest[1]))
-        self.assertEqual(len(pageRequest[1]), len(pageRequest[2]))
-        self.assertEqual(len(pageRequest[2]), len(pageRequest[3]))
+        self.assertEqual(len(pageRequest[0][1]), len(pageRequest[1][1]))
+        self.assertEqual(len(pageRequest[1][1]), len(pageRequest[2][1]))
+        self.assertEqual(len(pageRequest[2][1]), len(pageRequest[3][1]))
 
     def test_equal_requests(self):
         '''Test that get_page() works in a normal manner from two requests.'''
 
-        firstRequest = utils.get_page()
-        secondRequest = utils.get_page()
+        firstRequest = utils.get_page()[1]
+        secondRequest = utils.get_page()[1]
 
         self.assertEqual(firstRequest, secondRequest)
 
     def test_paging_data(self):
         '''Test that get_page() returns the correct and same tickets in the first page.'''
 
-        newRequest = utils.get_page()
+        newRequest = utils.get_page()[1]
 
         oldRequestFile = open('jsons/ticketPageRequest.json', 'r')
         oldRequest = json.loads(oldRequestFile.read())

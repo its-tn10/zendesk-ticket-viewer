@@ -23,7 +23,7 @@ def get_page(page = 1):
         lowerBound = (page - 1) * 25
         higherBound = lowerBound + 25
         
-        return tickets[lowerBound:higherBound]
+        return pages, tickets[lowerBound:higherBound]
 
     raise ValueError()
 

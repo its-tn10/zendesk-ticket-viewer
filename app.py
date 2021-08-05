@@ -15,7 +15,7 @@ def index():
 def view(page):
     tickets = utils.get_page(page)
 
-    return render_template('table.html', tickets=tickets)
+    return render_template('table.html', tickets=tickets[1], pages=tickets[0])
 
 @app.route('/ticket/<int:ticket_id>')
 def ticket(ticket_id):
