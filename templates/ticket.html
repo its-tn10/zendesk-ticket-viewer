@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1 class="display-5 fw-bold">Ticket created at {{ticket['created_at']}}</h1>
-<p>{{ticket['subject']}}</p>
+<p>[{{ticket['status']}}] Ticket #{{ticket['id']}} // Created on {{ticket['created_at']}} by {{ticket['requester_id']}}</p>
+<h1 class="display-5 fw-bold">{{ticket['subject']}}</h1>
+<p>{{ticket['description']}}</p>
+
+{% if request.referrer is not none %}
+<a href="{{request.referrer}}" class="btn btn-primary" role="button">Go back</a>
+{% else %}
+<a href="{{url_for('view')}}" class="btn btn-primary" role="button">Go back</a>
+{% endif %}
+
 {% endblock %}

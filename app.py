@@ -20,6 +20,7 @@ def view(page):
 @app.route('/ticket/<int:ticket_id>')
 def ticket(ticket_id):
     ticket = utils.get_ticket(ticket_id)
+    ticket['created_at'] = utils.parse_timestamp(ticket['created_at'], '%m/%d/%Y, %H:%M:%S')
 
     return render_template('ticket.html', ticket=ticket)
 

@@ -1,6 +1,6 @@
 from errors import APIError
 
-import base64, os, requests
+import base64, datetime, iso8601, os, requests
 
 def make_request(endpoint):
     auth_str = base64.b64encode((os.environ.get('ZENDESK_EMAIL') + '/token:' + os.environ.get('ZENDESK_TOKEN')).encode()).decode()
@@ -26,3 +26,6 @@ def get_page(page = 1):
         return tickets[lowerBound:higherBound]
 
     raise ValueError()
+
+def parse_timestamp(timestamp, format):
+    return iso8601.parse_date(timestamp).strftime(format)
