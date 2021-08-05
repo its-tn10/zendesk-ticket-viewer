@@ -17,7 +17,7 @@ def get_ticket(ticket_id):
 
 def get_page(page = 1):
     tickets = get_tickets()
-    pages = (len(tickets) // 25) + 1
+    pages = len(tickets) // 25
 
     if 1 <= page <= pages:
         lowerBound = (page - 1) * 25
