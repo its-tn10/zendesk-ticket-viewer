@@ -19,7 +19,9 @@ def view(page):
 
 @app.route('/ticket/<int:ticket_id>')
 def ticket(ticket_id):
-    pass
+    ticket = utils.get_ticket(ticket_id)
+
+    return render_template('ticket.html', ticket=ticket)
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('SERVER_HOST'), port=os.environ.get('SERVER_PORT'), debug=True)

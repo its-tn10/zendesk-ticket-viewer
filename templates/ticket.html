@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="display-5 fw-bold">Ticket created at {{ticket['created_at']}}</h1>
+<p>{{ticket['subject']}}</p>
+{% endblock %}

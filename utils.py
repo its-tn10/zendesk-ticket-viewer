@@ -12,6 +12,9 @@ def make_request(endpoint):
 def get_tickets():
     return make_request('/api/v2/tickets').json()['tickets']
 
+def get_ticket(ticket_id):
+    return make_request('/api/v2/tickets/' + str(ticket_id)).json()['ticket']
+
 def get_page(page = 1):
     tickets = get_tickets()
     pages = (len(tickets) // 25) + 1
